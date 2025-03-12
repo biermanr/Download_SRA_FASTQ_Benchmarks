@@ -10,8 +10,8 @@ jobs:
         runs-on: ${{ matrix.os }}
 
         outputs:
-            output_1: ${{ steps.sratoolkit.outputs.ubuntu_timing }}
-            output_2: ${{ steps.sratoolkit.outputs.macos_timing }}
+            output_1: ${{ steps.sratoolkit.outputs.ubuntu-latest_timing }}
+            output_2: ${{ steps.sratoolkit.outputs.macos-latest_timing }}
 
         strategy:
             matrix:
