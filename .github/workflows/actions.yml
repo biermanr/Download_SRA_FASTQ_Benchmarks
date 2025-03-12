@@ -42,7 +42,9 @@ jobs:
             - name: Add timing results to README
               run: sh add_timing_result.sh
               env:
+                PLATFORM: ${{ matrix.os }}
                 TIMING: ${{ env.prefetch_timing }}
+                METHOD: "prefetch, fasterq-dump"
 
             - name: Commit and push if changed
               run: |-
