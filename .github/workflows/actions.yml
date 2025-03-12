@@ -1,16 +1,9 @@
 name: SRA timings
 
 on:
-    push:
-        branches:
-            - main
-            - dev
-            - setup_gha
-    pull_request:
-        branches:
-            - main
-            - dev
     workflow_dispatch:
+    schedule:
+        - cron: "0 0 1 * *"
 
 jobs:
     sra_prefetch_fasterq-dump:
@@ -27,6 +20,9 @@ jobs:
                 }'
 
         steps:
+            - name: Check out repo
+              uses: actions/checkout@v4
+
             - name: Download sra-toolkit
               run: |
                 wget ${{ fromJSON(env.sratoolkit_urls)[matrix.os] }} -O sra_toolkit.tar.gz
@@ -34,6 +30,16 @@ jobs:
                 tar -xzf sra_toolkit.tar.gz -C sra_toolkit --strip-components 1
                 ls
 
-            - name: Check prefetch
-              run: ./sra_toolkit/bin/prefetch --help
+            - name: Run prefetch and update README.md
+              run: |
+                echo "About to run prefetch for ${{ matrix.os }} >> README.md"
+                time ./sra_toolkit/bin/prefetch --help >> README.md
 
+            - name: Commit and push if changed
+              run: |-
+                git diff
+                git config --global user.email "actions@users.noreply.github.com"
+                git config --global user.name "README-bot"
+                git add -A
+                git commit -m "Updated content" || exit 0
+                git push
