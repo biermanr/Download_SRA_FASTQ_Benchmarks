@@ -12,11 +12,4 @@ DATE_STR=$(date "+%b %d`DaySuffix` %Y")
 
 ROW="| $METHOD | $PLATFORM | $TIMING | $DATE_STR |"
 
-# Annoying that sed works differently on mac vs linux
-if [[ $PLATFORM == "macos-"* ]]; then
-    sed -i '' "s/\(.*new timings at the start of each month.*\)/$ROW\n\1/" README.md
-fi
-
-if [[ $PLATFORM == "ubuntu-"* ]]; then
-    sed -i "s/\(.*new timings at the start of each month.*\)/$ROW\n\1/" README.md
-fi
+sed -i "s/\(.*new timings at the start of each month.*\)/$ROW\n\1/" README.md
