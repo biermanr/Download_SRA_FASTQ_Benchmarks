@@ -34,10 +34,15 @@ jobs:
                 tar -xzf sra_toolkit.tar.gz -C sra_toolkit --strip-components 1
                 ls
 
-            - name: Run prefetch and update README.md
+            - name: Run prefetch and store timings
               run: |
-                echo "About to run prefetch for ${{ matrix.os }} >> README.md"
-                time ./sra_toolkit/bin/prefetch --help >> README.md
+                time ./sra_toolkit/bin/prefetch --help
+                echo "prefetch_timing=01:00:00" >> $GITHUB_ENV
+
+            - name: Add timing results to README
+              run: sh add_timing_result.sh
+              env:
+                TIMING: ${{ env.prefetch_timing }}
 
             - name: Commit and push if changed
               run: |-
@@ -45,5 +50,5 @@ jobs:
                 git config --global user.email "actions@users.noreply.github.com"
                 git config --global user.name "README-bot"
                 git add README.md
-                git commit -m "Updated content" || exit 0
+                git commit -m "Updated Timings" || exit 0
                 git push
