@@ -41,7 +41,7 @@ jobs:
                 echo "prefetch_timing=01:00:00" >> $GITHUB_ENV
 
             - name: Add timing results to README
-              run: sh add_timing_result.sh
+              run: bash add_timing_result.bash
               env:
                 PLATFORM: ${{ matrix.os }}
                 TIMING: ${{ env.prefetch_timing }}

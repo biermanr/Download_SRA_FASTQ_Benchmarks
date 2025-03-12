@@ -1,4 +1,4 @@
-
+#!/bin/bash
 # Stolen from https://stackoverflow.com/questions/2495459/formatting-the-date-in-unix-to-include-suffix-on-day-st-nd-rd-and-th
 DaySuffix() {
   case `date +%e` in
