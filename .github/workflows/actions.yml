@@ -33,7 +33,8 @@ jobs:
             - name: Run prefetch and store timings
               run: |
                 time ./sra_toolkit/bin/prefetch --help
-                echo "${{ matrix.os }}_timing=01:00:00" >> $GITHUB_OUTPUT
+                platform="${{ matrix.os }}"
+                echo "${platform}_timing=01:00:00" >> $GITHUB_OUTPUT
 
 
     update_README:
