@@ -7,14 +7,13 @@ on:
 
 jobs:
     sra_prefetch_fasterq-dump:
-
-        permissions:
-            contents: write
-
         runs-on: ${{ matrix.os }}
 
+        outputs:
+            output_1: ${{ steps.sratoolkit.outputs.ubuntu_timing }}
+            output_2: ${{ steps.sratoolkit.outputs.macos_timing }}
+
         strategy:
-            max-parallel: 1
             matrix:
                 os: [ubuntu-latest, macos-latest]
 
@@ -25,33 +24,38 @@ jobs:
                 }'
 
         steps:
-            - name: Check out repo
-              uses: actions/checkout@v4
-
             - name: Download sra-toolkit
               run: |
                 wget ${{ fromJSON(env.sratoolkit_urls)[matrix.os] }} -O sra_toolkit.tar.gz
                 mkdir sra_toolkit
                 tar -xzf sra_toolkit.tar.gz -C sra_toolkit --strip-components 1
-                ls
 
             - name: Run prefetch and store timings
               run: |
                 time ./sra_toolkit/bin/prefetch --help
-                echo "prefetch_timing=01:00:00" >> $GITHUB_ENV
+                echo "${{ matrix.os }}_timing=01:00:00" >> $GITHUB_OUTPUT
 
-            - name: Add timing results to README
-              run: bash add_timing_result.bash
-              env:
-                PLATFORM: ${{ matrix.os }}
-                TIMING: ${{ env.prefetch_timing }}
-                METHOD: "prefetch, fasterq-dump"
+
+    update_README:
+        needs: [sra_prefetch_fasterq-dump]
+
+        permissions:
+            contents: write
+
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Check out repo
+              uses: actions/checkout@v4
+
+            - name: Example
+              run: echo '${{ toJSON(needs.sra_prefetch_fasterq-dump.outputs) }}'
 
             - name: Commit and push if changed
               run: |-
+                git diff
                 git config --global user.email "actions@users.noreply.github.com"
                 git config --global user.name "README-bot"
-                git pull
                 git add README.md
                 git commit -m "Updated Timings" || exit 0
                 git push
