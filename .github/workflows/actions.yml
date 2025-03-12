@@ -10,8 +10,8 @@ jobs:
         runs-on: ${{ matrix.os }}
 
         outputs:
-            output_1: ${{ steps.sratoolkit.outputs.ubuntu-latest_timing }}
-            output_2: ${{ steps.sratoolkit.outputs.macos-latest_timing }}
+            ubuntu_timing: ${{ steps.run_sratoolkit.outputs.ubuntu-latest_timing }}
+            macos_timing: ${{ steps.run_sratoolkit.outputs.macos-latest_timing }}
 
         strategy:
             matrix:
@@ -31,6 +31,7 @@ jobs:
                 tar -xzf sra_toolkit.tar.gz -C sra_toolkit --strip-components 1
 
             - name: Run prefetch and store timings
+              id: run_sratoolkit
               run: |
                 time ./sra_toolkit/bin/prefetch --help
                 platform="${{ matrix.os }}"
