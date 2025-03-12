@@ -50,8 +50,19 @@ jobs:
             - name: Check out repo
               uses: actions/checkout@v4
 
-            - name: Example
-              run: echo '${{ toJSON(needs.sra_prefetch_fasterq-dump.outputs) }}'
+            - name: Add ubuntu timing results to README
+              run: bash add_timing_result.bash
+              env:
+                PLATFORM: "ubuntu-latest"
+                TIMING: ${{ toJSON(needs.sra_prefetch_fasterq-dump.outputs)['ubuntu_timing'] }}
+                METHOD: "prefetch, fasterq-dump"
+
+            - name: Add macos timing results to README
+              run: bash add_timing_result.bash
+              env:
+                PLATFORM: "macos-latest"
+                TIMING: ${{ toJSON(needs.sra_prefetch_fasterq-dump.outputs)['macos_timing'] }}
+                METHOD: "prefetch, fasterq-dump"
 
             - name: Commit and push if changed
               run: |-
