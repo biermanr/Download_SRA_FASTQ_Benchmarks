@@ -1,0 +1,39 @@
+name: SRA timings
+
+on:
+    push:
+        branches:
+            - main
+            - dev
+            - setup_gha
+    pull_request:
+        branches:
+            - main
+            - dev
+    workflow_dispatch:
+
+jobs:
+    sra_prefetch_fasterq-dump:
+        runs-on: ${{ matrix.os }}
+
+        strategy:
+            matrix:
+                os: [ubuntu-latest, macos-latest]
+
+        env:
+            sratoolkit_urls: '{
+                "ubuntu-latest" : "https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.2.0/sratoolkit.3.2.0-ubuntu64.tar.gz",
+                "macos-latest": "https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.2.0/sratoolkit.3.2.0-mac-arm64.tar.gz",
+                }'
+
+        steps:
+            - name: Download sra-toolkit
+              run: |
+                wget ${{ fromJSON(env.sratoolkit_urls)[matrix.os] }} -O sra_toolkit.tar.gz
+                mkdir sra_toolkit
+                tar -xzf sra_toolkit.tar.gz -C sra_toolkit --strip-components 1
+                ls
+
+            - name: Check prefetch
+              run: ./sra_toolkit/bin/prefetch --help
+
