@@ -59,14 +59,14 @@ jobs:
               run: bash add_timing_result.bash
               env:
                 PLATFORM: "ubuntu-latest"
-                TIMING: ${{ fromJSON(needs.sra_prefetch_fasterq-dump.outputs).ubuntu_timing }}
+                TIMING: ${{ fromJSON(needs.sra_prefetch_fasterq-dump.outputs)['ubuntu_timing'] }}
                 METHOD: "prefetch, fasterq-dump"
 
             - name: Add macos timing results to README
               run: bash add_timing_result.bash
               env:
                 PLATFORM: "macos-latest"
-                TIMING: ${{ fromJSON(needs.sra_prefetch_fasterq-dump.outputs).macos_timing }}
+                TIMING: ${{ fromJSON(needs.sra_prefetch_fasterq-dump.outputs)['macos_timing'] }}
                 METHOD: "prefetch, fasterq-dump"
 
             - name: Commit and push if changed
