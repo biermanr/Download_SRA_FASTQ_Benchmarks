@@ -11,9 +11,10 @@ Table of timings for getting paired end fastq's for
 
 | Approach | Platform | Time | Date |
 | -------- | -------- | ---- | ---- |
-| prefetch, fasterq-dump | ubuntu-latest | 0m14.870s | Mar 13th 2025 |
+| old, prefetch, fasterq-dump | ubuntu-latest | 0m14.870s | Mar 13th 2025 |
 | prefetch, fasterq-dump | macos-latest | 0m16.930s | Mar 13th 2025 |
-(new timings at the start of each month)
+
+New timings at the start of each month
 
 The timings are measured on github actions runners, so might not be reflective of
 what you would see on your own machine.

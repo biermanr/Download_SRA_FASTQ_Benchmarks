@@ -38,6 +38,8 @@ jobs:
               id: run_sratoolkit
               run: |
                 timing=`(time bash prefetch_fasterq-dump.bash) 2>&1 | awk '$1 ~ "real" { print $2 }'`
+                ls
+                md5sum *.fastq*
                 platform="${{ matrix.os }}"
                 echo "${platform}_timing=${timing}" >> "$GITHUB_OUTPUT"
 
