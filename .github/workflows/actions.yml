@@ -37,7 +37,7 @@ jobs:
             - name: Run prefetch, fasterq-dump and store timings
               id: run_sratoolkit
               run: |
-                timing="`(bash prefetch_fasterq-dump.bash) 2>&1 | awk '$1 ~ "real" { print $2 }'`"
+                timing=`(time bash prefetch_fasterq-dump.bash) 2>&1 | awk '$1 ~ "real" { print $2 }'`
                 platform="${{ matrix.os }}"
                 echo "${platform}_timing=${timing}" >> "$GITHUB_OUTPUT"
 
