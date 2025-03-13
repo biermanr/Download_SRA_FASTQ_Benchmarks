@@ -24,18 +24,22 @@ jobs:
                 }'
 
         steps:
+            - name: Check out repo
+              uses: actions/checkout@v4
+
             - name: Download sra-toolkit
               run: |
                 wget ${{ fromJSON(env.sratoolkit_urls)[matrix.os] }} -O sra_toolkit.tar.gz
                 mkdir sra_toolkit
                 tar -xzf sra_toolkit.tar.gz -C sra_toolkit --strip-components 1
+                ln -s sra_toolkit/bin/prefetch prefetch
+                ln -s sra_toolkit/bin/fasterq-dump fasterq-dump
 
-            - name: Run prefetch and store timings
+            - name: Run prefetch, fasterq-dump and store timings
               id: run_sratoolkit
               run: |
-                time ./sra_toolkit/bin/prefetch --help
+                timing=`(bash prefetch_fasterq-dump.bash) 2>&1 | awk '$1 ~ "real" { print $2 }'`
                 platform="${{ matrix.os }}"
-                timing="01:00:00"
                 echo "${platform}_timing=${timing}" >> "$GITHUB_OUTPUT"
 
 
