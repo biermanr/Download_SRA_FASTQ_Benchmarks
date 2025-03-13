@@ -32,8 +32,7 @@ jobs:
                 wget ${{ fromJSON(env.sratoolkit_urls)[matrix.os] }} -O sra_toolkit.tar.gz
                 mkdir sra_toolkit
                 tar -xzf sra_toolkit.tar.gz -C sra_toolkit --strip-components 1
-                cp sra_toolkit/bin/prefetch prefetch
-                cp sra_toolkit/bin/fasterq-dump fasterq-dump
+                echo "sra_toolkit/bin" >> "$GITHUB_PATH"
 
             - name: Run prefetch, fasterq-dump and store timings
               id: run_sratoolkit
