@@ -10,6 +10,8 @@ Table of timings for getting paired end fastq's for
  `SRR32515828_1.fastq` and `SRR32515828_2.fastq`. This sample was chosen arbitrarily.
 
 | Approach | Platform | Time | Date |
+| prefetch, fasterq-dump | ubuntu-latest | 0m18.231s | Mar 13th 2025 |
+| prefetch, fasterq-dump | macos-latest | 0m17.397s | Mar 13th 2025 |
 | -------- | -------- | ---- | ---- |
 | old, prefetch, fasterq-dump | ubuntu-latest | 0m14.870s | Mar 13th 2025 |
 | prefetch, fasterq-dump | macos-latest | 0m16.930s | Mar 13th 2025 |
