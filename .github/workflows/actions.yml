@@ -38,7 +38,6 @@ jobs:
               id: run_sratoolkit
               run: |
                 bash prefetch_fasterq-dump.bash
-                cat /Users/runner/ncbi_error_report.txt
                 timing=`(bash prefetch_fasterq-dump.bash) 2>&1 | awk '$1 ~ "real" { print $2 }'`
                 platform="${{ matrix.os }}"
                 echo "${platform}_timing=${timing}" >> "$GITHUB_OUTPUT"
