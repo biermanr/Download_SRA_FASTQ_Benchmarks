@@ -6,8 +6,8 @@ I am grateful for this fantastic resource, but multiple times in the past I have
 I am creating this repository to provide periodic timings and notes for different ways of accessing FASTQs from SRA.
 
 Table of timings for getting paired end fastq's for
-[ERR1295999](https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=ERR1295999&display=metadata)
- `ERR1295999_1.fastq` and `ERR1295999_2.fastq`. This sample was chosen arbitrarily.
+[SRR32515828](https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR32515828&display=metadata)
+ `SRR32515828_1.fastq` and `SRR32515828_2.fastq`. This sample was chosen arbitrarily.
 
 | Approach | Platform | Time | Date |
 | -------- | -------- | ---- | ---- |
