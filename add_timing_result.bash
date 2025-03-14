@@ -12,4 +12,4 @@ DATE_STR=$(date "+%b %d`DaySuffix` %Y")
 
 ROW="| $METHOD | $PLATFORM | $TIMING | $DATE_STR |"
 
-sed -i "s/\(.* -------- .*\)/$ROW\n\1/" README.md
+sed -i "s/\(.* -------- .*\)/\1\n$ROW/" README.md
