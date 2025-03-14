@@ -25,3 +25,5 @@ TODOs
 - Use a different SRR as the file to download (current is too fast)
 - Simplify GHA with a matrix of approaches
 - Move setup logic into bash scripts
+- Validate shasums
+- Decide if I should be timing to get .fastq or .fastq.gz
