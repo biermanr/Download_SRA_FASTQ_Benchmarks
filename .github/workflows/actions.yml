@@ -6,7 +6,7 @@ on:
         - cron: "0 0 1 * *"
 
 jobs:
-    sra_prefetch_fasterq-dump:
+    fetch_fastq:
         runs-on: ${{ matrix.os }}
 
         outputs:
@@ -30,13 +30,14 @@ jobs:
               id: run_approach
               run: |
                 bash scripts/setup_sratools.bash
+                bash scripts/${{ matrix.approach }}.bash
                 timing=`(time bash scripts/${{ matrix.approach }}.bash) 2>&1 | awk '$1 ~ "real" { print $2 }'`
                 shasum *.fastq*
                 platform_approach="${{ matrix.os }}_${{ matrix.approach }}"
                 echo "${platform_approach}=${timing}" >> "$GITHUB_OUTPUT"
 
     update_README:
-        needs: [sra_prefetch_fasterq-dump]
+        needs: [fetch_fastq]
 
         permissions:
             contents: write
@@ -49,48 +50,48 @@ jobs:
 
             - name: Show
               run:
-                echo '${{ toJSON(needs.sra_prefetch_fasterq-dump.outputs) }}'
+                echo '${{ toJSON(needs.fetch_fastq.outputs) }}'
 
             - name: Add ubuntu prefetch, fasterq-dump timing results to README
               run: bash scripts/add_timing_result.bash
               env:
                 PLATFORM: "ubuntu-latest"
-                TIMING: ${{ needs.sra_prefetch_fasterq-dump.outputs.ubuntu_sratools }}
+                TIMING: ${{ needs.fetch_fastq.outputs.ubuntu_sratools }}
                 METHOD: "prefetch, fasterq-dump"
 
             - name: Add macos prefetch, fasterq-dump timing results to README
               run: bash scripts/add_timing_result.bash
               env:
                 PLATFORM: "macos-latest"
-                TIMING: ${{ needs.sra_prefetch_fasterq-dump.outputs.macos_sratools }}
+                TIMING: ${{ needs.fetch_fastq.outputs.macos_sratools }}
                 METHOD: "prefetch, fasterq-dump"
 
             - name: Add ubuntu fasterq-dump only timing results to README
               run: bash scripts/add_timing_result.bash
               env:
                 PLATFORM: "ubuntu-latest"
-                TIMING: ${{ needs.sra_prefetch_fasterq-dump.outputs.ubuntu_fqdumponly }}
+                TIMING: ${{ needs.fetch_fastq.outputs.ubuntu_fqdumponly }}
                 METHOD: "fasterq-dump only"
 
             - name: Add macos fasterq-dump only timing results to README
               run: bash scripts/add_timing_result.bash
               env:
                 PLATFORM: "macos-latest"
-                TIMING: ${{ needs.sra_prefetch_fasterq-dump.outputs.macos_fqdumponly }}
+                TIMING: ${{ needs.fetch_fastq.outputs.macos_fqdumponly }}
                 METHOD: "fasterq-dump only"
 
             - name: Add ubuntu aws, fasterq-dump timing results to README
               run: bash scripts/add_timing_result.bash
               env:
                 PLATFORM: "ubuntu-latest"
-                TIMING: ${{ needs.sra_prefetch_fasterq-dump.outputs.ubuntu_aws_fqdump }}
+                TIMING: ${{ needs.fetch_fastq.outputs.ubuntu_aws_fqdump }}
                 METHOD: "aws, fasterq-dump"
 
             - name: Add macos aws, fasterq-dump timing results to README
               run: bash scripts/add_timing_result.bash
               env:
                 PLATFORM: "macos-latest"
-                TIMING: ${{ needs.sra_prefetch_fasterq-dump.outputs.macos_aws_fqdump }}
+                TIMING: ${{ needs.fetch_fastq.outputs.macos_aws_fqdump }}
                 METHOD: "aws, fasterq-dump"
 
             - name: Commit and push changed to README
