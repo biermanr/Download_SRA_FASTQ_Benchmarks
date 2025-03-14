@@ -11,12 +11,13 @@ Table of timings for getting paired end fastq's for
 
 | Approach | Platform | Time | Date |
 | -------- | -------- | ---- | ---- |
-| fasterq-dump only | macos-latest | 0m2.935s | Mar 14th 2025 |
-| fasterq-dump only | ubuntu-latest | 0m0.279s | Mar 14th 2025 |
-| prefetch, fasterq-dump | macos-latest | 0m22.051s | Mar 14th 2025 |
-| prefetch, fasterq-dump | ubuntu-latest | 0m15.749s | Mar 14th 2025 |
 
 New timings at the start of each month
 
 The timings are measured on github actions runners, so might not be reflective of
 what you would see on your own machine.
+
+TODOs
+- Use a different SRR as the file to download (current is too fast)
+- Simplify GHA with a matrix of approaches
+- Move setup logic into bash scripts
