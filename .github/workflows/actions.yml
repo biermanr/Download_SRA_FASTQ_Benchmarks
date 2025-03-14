@@ -12,8 +12,8 @@ jobs:
         outputs:
             ubuntu_sratools: ${{ steps.run_sratoolkit.outputs.ubuntu-latest_sratools }}
             macos_sratools: ${{ steps.run_sratoolkit.outputs.macos-latest_sratools }}
-            ubuntu_fqdumponly: ${{ steps.run_sratoolkit.outputs.ubuntu-latest_fqdumponly }}
-            macos_fqdumponly: ${{ steps.run_sratoolkit.outputs.macos-latest_fqdumponly }}
+            ubuntu_fqdumponly: ${{ steps.run_fasterqdump.outputs.ubuntu-latest_fqdumponly }}
+            macos_fqdumponly: ${{ steps.run_fasterqdump.outputs.macos-latest_fqdumponly }}
 
         strategy:
             matrix:
