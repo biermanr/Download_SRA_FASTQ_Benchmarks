@@ -11,28 +11,6 @@ Table of timings for getting paired end fastq's for
 
 | Approach | Platform | Time | Date |
 | -------- | -------- | ---- | ---- |
-| aws, fasterq-dump | macos-latest |  | Mar 14th 2025 |
-| aws, fasterq-dump | ubuntu-latest | 0m15.689s | Mar 14th 2025 |
-| fasterq-dump only | macos-latest | 1m1.598s | Mar 14th 2025 |
-| fasterq-dump only | ubuntu-latest | 1m19.790s | Mar 14th 2025 |
-| prefetch, fasterq-dump | macos-latest | 0m17.896s | Mar 14th 2025 |
-| prefetch, fasterq-dump | ubuntu-latest | 0m16.544s | Mar 14th 2025 |
-| fasterq-dump only | macos-latest | 0m59.659s | Mar 14th 2025 |
-| fasterq-dump only | ubuntu-latest | 1m23.173s | Mar 14th 2025 |
-| prefetch, fasterq-dump | macos-latest | 0m9.556s | Mar 14th 2025 |
-| prefetch, fasterq-dump | ubuntu-latest | 0m9.849s | Mar 14th 2025 |
-| fasterq-dump only | macos-latest | 1m34.214s | Mar 14th 2025 |
-| fasterq-dump only | ubuntu-latest | 0m28.496s | Mar 14th 2025 |
-| prefetch, fasterq-dump | macos-latest | 0m12.515s | Mar 14th 2025 |
-| prefetch, fasterq-dump | ubuntu-latest | 0m9.201s | Mar 14th 2025 |
-| fasterq-dump only | macos-latest | 0m2.467s | Mar 14th 2025 |
-| fasterq-dump only | ubuntu-latest | 0m0.366s | Mar 14th 2025 |
-| prefetch, fasterq-dump | macos-latest | 0m18.362s | Mar 14th 2025 |
-| prefetch, fasterq-dump | ubuntu-latest | 0m17.244s | Mar 14th 2025 |
-| fasterq-dump only | macos-latest | 0m2.434s | Mar 14th 2025 |
-| fasterq-dump only | ubuntu-latest | 0m0.854s | Mar 14th 2025 |
-| prefetch, fasterq-dump | macos-latest | 0m21.427s | Mar 14th 2025 |
-| prefetch, fasterq-dump | ubuntu-latest | 0m18.482s | Mar 14th 2025 |
 
 New timings at the start of each month
 

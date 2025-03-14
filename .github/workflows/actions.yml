@@ -15,7 +15,7 @@ jobs:
             ubuntu_fqdumponly: ${{ steps.run_approach.outputs.ubuntu-latest_fasterqdump_only }}
             macos_fqdumponly: ${{ steps.run_approach.outputs.macos-latest_fasterqdump_only }}
             ubuntu_aws_fqdump: ${{ steps.run_approach.outputs.ubuntu-latest_aws_and_fasterqdump }}
-            macos_aws_fqdump: ${{ steps.run_approach.outputs.macos-aws_and_fasterqdump }}
+            macos_aws_fqdump: ${{ steps.run_approach.outputs.macos-latest_aws_and_fasterqdump }}
 
         strategy:
             matrix:
