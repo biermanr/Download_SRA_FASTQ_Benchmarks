@@ -1,4 +1,7 @@
 #!/bin/bash
+echo "Running this"
+echo $RUNNER_OS
+
 if [[ $RUNNER_OS == *"ubuntu"* ]]; then
     SOFTWARE_URL="https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.1.0/sratoolkit.3.1.0-ubuntu64.tar.gz"
 fi
