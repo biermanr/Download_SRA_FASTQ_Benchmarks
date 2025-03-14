@@ -19,21 +19,12 @@ jobs:
             matrix:
                 os: [ubuntu-latest, macos-latest]
                 approach: [prefetch_and_fasterqdump, fasterqdump_only]
-
-        env:
-            sratoolkit_urls: '{
-                "ubuntu-latest" : "https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.1.0/sratoolkit.3.1.0-ubuntu64.tar.gz",
-                "macos-latest": "https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.1.0/sratoolkit.3.1.0-mac-arm64.tar.gz",
-              }'
-
         steps:
             - name: Check out repo
               uses: actions/checkout@v4
 
             - name: Download sra-toolkit
               run: bash scripts/setup_sratools.bash
-              env:
-                SOFTWARE_URL: ${{ fromJSON(env.sratoolkit_urls)[matrix.os] }}
 
             - name: Run fastq getting approach and store timings
               id: run_approach
