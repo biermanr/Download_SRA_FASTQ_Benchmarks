@@ -1,12 +1,9 @@
 #!/bin/bash
-echo "Running this"
-echo $RUNNER_OS
-
-if [[ $RUNNER_OS == *"ubuntu"* ]]; then
+if [[ $RUNNER_OS == *"Linux"* ]]; then
     SOFTWARE_URL="https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.1.0/sratoolkit.3.1.0-ubuntu64.tar.gz"
 fi
 
-if [[ $RUNNER_OS == *"macos"* ]]; then
+if [[ $RUNNER_OS == *"macOS"* ]]; then
     SOFTWARE_URL="https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.1.0/sratoolkit.3.1.0-mac-arm64.tar.gz"
 fi
 
