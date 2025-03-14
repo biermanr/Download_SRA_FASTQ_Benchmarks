@@ -10,20 +10,21 @@ jobs:
         runs-on: ${{ matrix.os }}
 
         outputs:
-            ubuntu_sratools: ${{ steps.run_sratoolkit.outputs.ubuntu-latest_sratools }}
-            macos_sratools: ${{ steps.run_sratoolkit.outputs.macos-latest_sratools }}
-            ubuntu_fqdumponly: ${{ steps.run_fasterqdump.outputs.ubuntu-latest_fqdumponly }}
-            macos_fqdumponly: ${{ steps.run_fasterqdump.outputs.macos-latest_fqdumponly }}
+            ubuntu_sratools: ${{ steps.run_approach.outputs.ubuntu-latest_prefetch_and_fasterqdump }}
+            macos_sratools: ${{ steps.run_approach.outputs.macos-latest_prefetch_and_fasterqdump }}
+            ubuntu_fqdumponly: ${{ steps.run_approach.outputs.ubuntu-latest_fasterqdump_only }}
+            macos_fqdumponly: ${{ steps.run_approach.outputs.macos-latest_fasterqdump_only }}
 
         strategy:
             matrix:
                 os: [ubuntu-latest, macos-latest]
+                approach: [prefetch_and_fasterqdump, fasterqdump_only]
 
         env:
             sratoolkit_urls: '{
                 "ubuntu-latest" : "https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.2.0/sratoolkit.3.2.0-ubuntu64.tar.gz",
                 "macos-latest": "https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.2.0/sratoolkit.3.2.0-mac-arm64.tar.gz",
-                }'
+              }'
 
         steps:
             - name: Check out repo
@@ -34,22 +35,13 @@ jobs:
               env:
                 SOFTWARE_URL: ${{ fromJSON(env.sratoolkit_urls)[matrix.os] }}
 
-            - name: Run prefetch, fasterq-dump and store timings
-              id: run_sratoolkit
+            - name: Run fastq getting approach and store timings
+              id: run_approach
               run: |
-                timing=`(time bash scripts/prefetch_fasterq-dump.bash) 2>&1 | awk '$1 ~ "real" { print $2 }'`
+                timing=`(time bash scripts/${{ matrix.approach }}.bash) 2>&1 | awk '$1 ~ "real" { print $2 }'`
                 shasum *.fastq*
-                platform="${{ matrix.os }}"
-                echo "${platform}_sratools=${timing}" >> "$GITHUB_OUTPUT"
-
-            - name: Run fasterq-dump ONLY
-              id: run_fasterqdump
-              run: |
-                rm -rf SRR32515828
-                timing=`(time bash scripts/fasterq-dump_only.bash) 2>&1 | awk '$1 ~ "real" { print $2 }'`
-                shasum *.fastq*
-                platform="${{ matrix.os }}"
-                echo "${platform}_fqdumponly=${timing}" >> "$GITHUB_OUTPUT"
+                platform_approach="${{ matrix.os }}_${{ matrix.approach }}"
+                echo "${platform_approach}=${timing}" >> "$GITHUB_OUTPUT"
 
     update_README:
         needs: [sra_prefetch_fasterq-dump]
