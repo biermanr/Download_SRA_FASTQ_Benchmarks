@@ -10,8 +10,10 @@ jobs:
         runs-on: ${{ matrix.os }}
 
         outputs:
-            ubuntu_timing: ${{ steps.run_sratoolkit.outputs.ubuntu-latest_timing }}
-            macos_timing: ${{ steps.run_sratoolkit.outputs.macos-latest_timing }}
+            ubuntu_sratools: ${{ steps.run_sratoolkit.outputs.ubuntu-latest_sratools }}
+            macos_sratools: ${{ steps.run_sratoolkit.outputs.macos-latest_sratools }}
+            ubuntu_fqdumponly: ${{ steps.run_sratoolkit.outputs.ubuntu-latest_fqdumponly }}
+            macos_fqdumponly: ${{ steps.run_sratoolkit.outputs.macos-latest_fqdumponly }}
 
         strategy:
             matrix:
