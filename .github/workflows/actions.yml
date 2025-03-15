@@ -4,7 +4,7 @@ on:
     workflow_dispatch:
     schedule:
         - cron: "0 0 * * *"
-
+        
 jobs:
     fetch_fastq:
         runs-on: ${{ matrix.os }}
@@ -30,6 +30,7 @@ jobs:
 
             - name: Install sratools
               run: bash scripts/setup_sratools.bash
+
               if: ${{ contains(matrix.approach, 'fasterqdump') }}
 
             - name: Run fastq getting approach and store timings
@@ -42,7 +43,6 @@ jobs:
                 du -hs *.fastq*
                 wc -l *.fastq*
                 echo "${{ matrix.os }}_${{ matrix.approach }}=${timing}" >> "$GITHUB_OUTPUT"
-
 
     update_README:
         needs: [fetch_fastq]

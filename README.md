@@ -5,6 +5,7 @@ The Sequence Read Archive (SRA) curated by the NCBI is a fantastic resource for 
 I am grateful for this fantastic resource, but multiple times in the past I have run into issues knowing how best to retrieve FASTQ files.
 I am creating this repository to provide periodic timings and notes for different ways of accessing FASTQs from SRA.
 
+
 The different approaches currently being used are
 - [aria2c EBI](scripts/aria2c_ebi.bash) which downloads from EBI's mirror of SRA
 - [prefetch, fasterq-dump](scripts/prefetch_and_fasterqdump.bash) which is SRA's recommendation
