@@ -32,7 +32,7 @@ jobs:
             - name: Run fastq getting approach and store timings
               id: run_approach
               run: |
-                timing=`(time bash scripts/${{ matrix.approach }}.bash) 2>&1 | awk '$1 ~ "real" { split($2,a,"[ms]"); print $2,a[1]*60+a[2]"s" }'`
+                timing=`(time bash scripts/${{ matrix.approach }}.bash) 2>&1 | awk '$1 ~ "real" { split($2,a,"[ms]"); print a[1]*60+a[2] }'`
                 shasum *.fastq*
                 platform_approach="${{ matrix.os }}_${{ matrix.approach }}"
                 echo "${platform_approach}=${timing}" >> "$GITHUB_OUTPUT"
