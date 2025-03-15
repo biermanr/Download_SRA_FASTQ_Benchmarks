@@ -11,8 +11,6 @@ Table of timings for getting paired end fastq's for
 
 | Date | OS | prefetch, fasterq-dump | aws, fasterq-dump | fasterq-dump only |
 | --- | :-- | --: | --: | --: |
-| Mar 15th 2025 | macOS | 14.12 | 24.07 | 61.25 |
-| Mar 15th 2025 | ubuntu | 16.06 | 11.02 | 37.52 |
 
 New timings at the start of each month
 
@@ -26,3 +24,5 @@ TODOs
 - Decide if I should be timing to get .fastq or .fastq.gz (currently it's the .fastq)
 - Add EBI endpoint approach
 - Write up a discussion of learnings
+- Create a github pages as well as the README?
+- Add a graph view?
