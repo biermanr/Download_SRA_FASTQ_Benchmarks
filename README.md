@@ -22,6 +22,7 @@ The timings are measured on github actions runners, so might not be reflective o
 what you would see on your own machine.
 
 TODOs
+- Update README to include a description of the different approaches. Maybe programmatically include code into README? Or just link
 - Validate shasums
 - Write up a discussion of learnings
 - Create a github pages as well as the README?
