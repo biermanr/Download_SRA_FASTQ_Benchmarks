@@ -20,18 +20,17 @@ New timings at the start of each month
 
 | Date | OS | aria2c EBI | prefetch, fasterq-dump | aws, fasterq-dump | fasterq-dump only |
 | --- | :-- | --: | --: | --: | --: |
-| Mar 15th 2025 | macOS | 34.66 | 36.63 | 54.15 | 152.04 |
-| Mar 15th 2025 | ubuntu | 40.54 | 39.21 | 33.78 | 71.05 |
 
 
-Note that the `aria2c EBI` approach results in gzipped versions of the fastq files, so the
-timing includes un-gzipping, which is arguably unfair. Another note is that the fastq files
-returned by `aria2c` vs. the other approaches doesn't have the same checksum, but it does have
-the same number of lines, so I think there may be some differences in the files hosted by SRA
-and EBI, but maybe just for quality scores.
-
-The timings are measured on github actions runners, so might not be reflective of
-what you would see on your own machine.
+Notes
+- The `aria2c EBI` approach results in gzipped versions of the fastq files
+    - timing includes un-gzipping, which is arguably unfair
+- The fastq files returned by `aria2c` vs. the other approaches doesn't have the same shasum
+    - but it does have the same number of lines
+    - There may be some differences in the files hosted by SRA and EBI, but maybe just for quality scores
+- aria2c downloading from `ftp://` was ~2-3X slower than from `https://` with aria2c
+    - This seems strange since the URI's for EBI are `ftp.sra.ebi.ac.uk/vol1/fastq`
+- The timings are measured on github actions runners, so might not be reflective of your experience
 
 TODOs
 - Write up a discussion of learnings
