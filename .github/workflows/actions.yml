@@ -53,47 +53,21 @@ jobs:
               run:
                 echo '${{ toJSON(needs.fetch_fastq.outputs) }}'
 
-            - name: Add ubuntu prefetch, fasterq-dump timing results to README
+            - name: Add ubuntu timing results to README
               run: bash scripts/add_timing_result.bash
               env:
-                PLATFORM: "ubuntu-latest"
-                TIMING: ${{ needs.fetch_fastq.outputs.ubuntu_sratools }}
-                METHOD: "prefetch, fasterq-dump"
+                OS: "ubuntu"
+                PF_FQD: ${{ needs.fetch_fastq.outputs.ubuntu_sratools }}
+                AWS_FQD: ${{ needs.fetch_fastq.outputs.ubuntu_aws_fqdump }}
+                FQD_ONLY: ${{ needs.fetch_fastq.outputs.ubuntu_fqdumponly }}
 
-            - name: Add macos prefetch, fasterq-dump timing results to README
+            - name: Add macos timing results to README
               run: bash scripts/add_timing_result.bash
               env:
-                PLATFORM: "macos-latest"
-                TIMING: ${{ needs.fetch_fastq.outputs.macos_sratools }}
-                METHOD: "prefetch, fasterq-dump"
-
-            - name: Add ubuntu fasterq-dump only timing results to README
-              run: bash scripts/add_timing_result.bash
-              env:
-                PLATFORM: "ubuntu-latest"
-                TIMING: ${{ needs.fetch_fastq.outputs.ubuntu_fqdumponly }}
-                METHOD: "fasterq-dump only"
-
-            - name: Add macos fasterq-dump only timing results to README
-              run: bash scripts/add_timing_result.bash
-              env:
-                PLATFORM: "macos-latest"
-                TIMING: ${{ needs.fetch_fastq.outputs.macos_fqdumponly }}
-                METHOD: "fasterq-dump only"
-
-            - name: Add ubuntu aws, fasterq-dump timing results to README
-              run: bash scripts/add_timing_result.bash
-              env:
-                PLATFORM: "ubuntu-latest"
-                TIMING: ${{ needs.fetch_fastq.outputs.ubuntu_aws_fqdump }}
-                METHOD: "aws, fasterq-dump"
-
-            - name: Add macos aws, fasterq-dump timing results to README
-              run: bash scripts/add_timing_result.bash
-              env:
-                PLATFORM: "macos-latest"
-                TIMING: ${{ needs.fetch_fastq.outputs.macos_aws_fqdump }}
-                METHOD: "aws, fasterq-dump"
+                OS: "macOS"
+                PF_FQD: ${{ needs.fetch_fastq.outputs.macos_sratools }}
+                AWS_FQD: ${{ needs.fetch_fastq.outputs.macos_aws_fqdump }}
+                FQD_ONLY: ${{ needs.fetch_fastq.outputs.macos_fqdumponly }}
 
             - name: Commit and push changed to README
               run: |-

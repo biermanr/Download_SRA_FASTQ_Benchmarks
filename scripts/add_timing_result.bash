@@ -10,6 +10,6 @@ DaySuffix() {
 }
 DATE_STR=$(date "+%b %d`DaySuffix` %Y")
 
-ROW="| $METHOD | $PLATFORM | $TIMING | $DATE_STR |"
+ROW="| $DATE_STR | $OS | $PF_FQD | $AWS_FQD | $FQD_ONLY |"
 
-sed -i "s/\(.* -------- .*\)/\1\n$ROW/" README.md
+sed -i "s/\(.*--------.*\)/\1\n$ROW/" README.md
