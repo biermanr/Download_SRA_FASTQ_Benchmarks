@@ -11,6 +11,8 @@ Table of timings for getting paired end fastq's for
 
 | Date | OS | prefetch, fasterq-dump | aws, fasterq-dump | fasterq-dump only |
 | --- | :-- | --: | --: | --: |
+| Mar 15th 2025 | macOS | 15.843 | 20.32 | 58.512 |
+| Mar 15th 2025 | ubuntu | 12.579 | 11.219 | 28.827 |
 
 New timings at the start of each month
 
