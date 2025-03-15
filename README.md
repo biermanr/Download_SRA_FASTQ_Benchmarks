@@ -20,6 +20,8 @@ New timings at the start of each month
 
 | Date | OS | aria2c EBI | prefetch, fasterq-dump | aws, fasterq-dump | fasterq-dump only |
 | --- | :-- | --: | --: | --: | --: |
+| Mar 15th 2025 | macOS | 34.66 | 36.63 | 54.15 | 152.04 |
+| Mar 15th 2025 | ubuntu | 40.54 | 39.21 | 33.78 | 71.05 |
 
 
 Note that the `aria2c EBI` approach results in gzipped versions of the fastq files, so the
