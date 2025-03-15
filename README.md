@@ -9,7 +9,8 @@ The different approaches currently being used are
 - [aria2c EBI](scripts/aria2c_ebi.bash) which downloads from EBI's mirror of SRA
 - [prefetch, fasterq-dump](scripts/prefetch_and_fasterqdump.bash) which is SRA's recommendation
 - [aws, fasterq-dump](scripts/aws_and_fasterqdump.bash) which directly downloads the .sra file from aws instead of using prefetch
-- [fasterq-dump only](scripts/fasterqdump_only.bash) which is running fasterq-dump without prefetch of aws. This is explicitly NOT recommened by NCBI
+- [fasterq-dump only](scripts/fasterqdump_only.bash) which is running fasterq-dump without prefetch of aws.
+    - This is explicitly NOT recommened by NCBI
 
 Table of timings in seconds for getting paired end fastq's for
 [SRR32596108](https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR32596108&display=metadata)
@@ -24,14 +25,15 @@ New timings at the start of each month
 
 
 Note that the `aria2c EBI` approach results in gzipped versions of the fastq files, so the
-timing includes un-gzipping, which is arguably fair or not.
+timing includes un-gzipping, which is arguably unfair. Another note is that the fastq files
+returned by `aria2c` vs. the other approaches doesn't have the same checksum, but it does have
+the same number of lines, so I think there may be some differences in the files hosted by SRA
+and EBI, but maybe just for quality scores.
 
 The timings are measured on github actions runners, so might not be reflective of
 what you would see on your own machine.
 
 TODOs
-- Update README to include a description of the different approaches. Maybe programmatically include code into README? Or just link
-- Validate shasums
 - Write up a discussion of learnings
 - Create a github pages as well as the README?
 - Add a graph view?
