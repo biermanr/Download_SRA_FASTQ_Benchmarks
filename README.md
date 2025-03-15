@@ -8,13 +8,11 @@ I am creating this repository to provide periodic timings and notes for differen
 Table of timings in seconds for getting paired end fastq's for
 [SRR32596108](https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR32596108&display=metadata)
  `SRR32596108_1.fastq` and `SRR32596108_2.fastq`. This sample was chosen arbitrarily.
+ Note that the `aria2c EBI` approach results in gzipped versions of the fastq files.
+ The timing does not include un-gzipping.
 
-| Date | OS | prefetch, fasterq-dump | aws, fasterq-dump | fasterq-dump only | wget ebi |
+| Date | OS | aria2c EBI | prefetch, fasterq-dump | aws, fasterq-dump | fasterq-dump only |
 | --- | :-- | --: | --: | --: | --: |
-| Mar 15th 2025 | macOS | 35.38 | 43.77 | 137.93 | 21.74 |
-| Mar 15th 2025 | ubuntu | 48.30 | 33.23 | 93.25 | 13.46 |
-| Mar 15th 2025 | macOS | 21.84 | 28.72 | 137.58 | 50.16 |
-| Mar 15th 2025 | ubuntu | 34.59 | 35.21 | 162.79 | 31.29 |
 
 New timings at the start of each month
 
@@ -23,8 +21,6 @@ what you would see on your own machine.
 
 TODOs
 - Validate shasums
-- Decide if I should be timing to get .fastq or .fastq.gz (currently it's the .fastq)
-- Add EBI endpoint approach
 - Write up a discussion of learnings
 - Create a github pages as well as the README?
 - Add a graph view?

@@ -16,13 +16,13 @@ jobs:
             macos_fqdumponly: ${{ steps.run_approach.outputs.macos-latest_fasterqdump_only }}
             ubuntu_aws_fqdump: ${{ steps.run_approach.outputs.ubuntu-latest_aws_and_fasterqdump }}
             macos_aws_fqdump: ${{ steps.run_approach.outputs.macos-latest_aws_and_fasterqdump }}
-            ubuntu_wget_ebi: ${{ steps.run_approach.outputs.ubuntu-latest_wget_ebi }}
-            macos_wget_ebi: ${{ steps.run_approach.outputs.macos-latest_wget_ebi }}
+            ubuntu_aria2c_ebi: ${{ steps.run_approach.outputs.ubuntu-latest_aria2c_ebi }}
+            macos_aria2c_ebi: ${{ steps.run_approach.outputs.macos-latest_aria2c_ebi }}
 
         strategy:
             matrix:
                 os: [ubuntu-latest, macos-latest]
-                approach: [prefetch_and_fasterqdump, fasterqdump_only, aws_and_fasterqdump, wget_ebi]
+                approach: [prefetch_and_fasterqdump, fasterqdump_only, aws_and_fasterqdump, aria2c_ebi]
 
         steps:
             - name: Check out repo
@@ -65,7 +65,7 @@ jobs:
                 PF_FQD: ${{ needs.fetch_fastq.outputs.ubuntu_sratools }}
                 AWS_FQD: ${{ needs.fetch_fastq.outputs.ubuntu_aws_fqdump }}
                 FQD_ONLY: ${{ needs.fetch_fastq.outputs.ubuntu_fqdumponly }}
-                WGET_EBI: ${{ needs.fetch_fastq.outputs.ubuntu_wget_ebi }}
+                ARIA2C_EBI: ${{ needs.fetch_fastq.outputs.ubuntu_aria2c_ebi }}
 
             - name: Add macos timing results to README
               run: bash scripts/add_timing_result.bash
@@ -74,7 +74,7 @@ jobs:
                 PF_FQD: ${{ needs.fetch_fastq.outputs.macos_sratools }}
                 AWS_FQD: ${{ needs.fetch_fastq.outputs.macos_aws_fqdump }}
                 FQD_ONLY: ${{ needs.fetch_fastq.outputs.macos_fqdumponly }}
-                WGET_EBI: ${{ needs.fetch_fastq.outputs.macos_wget_ebi }}
+                ARIA2C_EBI: ${{ needs.fetch_fastq.outputs.macos_aria2c_ebi }}
 
             - name: Commit and push changes to README
               run: |-
