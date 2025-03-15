@@ -30,12 +30,14 @@ jobs:
 
             - name: Install sratools
               run: bash scripts/setup_sratools.bash
+              if: ${{ contains(matrix.approach, 'fasterqdump') }}
 
             - name: Run fastq getting approach and store timings
               id: run_approach
               env:
                 ACCESSION: "SRR32596108"
               run: |
+                bash scripts/${{ matrix.approach }}.bash
                 timing=`(time bash scripts/${{ matrix.approach }}.bash) 2>&1 | awk '$1 ~ "real" { split($2,a,"[ms]"); printf "%.2f\n",a[1]*60+a[2] }'`
                 shasum *.fastq*
                 echo "${{ matrix.os }}_${{ matrix.approach }}=${timing}" >> "$GITHUB_OUTPUT"
