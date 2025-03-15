@@ -5,14 +5,12 @@ The Sequence Read Archive (SRA) curated by the NCBI is a fantastic resource for 
 I am grateful for this fantastic resource, but multiple times in the past I have run into issues knowing how best to retrieve FASTQ files.
 I am creating this repository to provide periodic timings and notes for different ways of accessing FASTQs from SRA.
 
-Table of timings for getting paired end fastq's for
-[SRR32515828](https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR32515828&display=metadata)
- `SRR32515828_1.fastq` and `SRR32515828_2.fastq`. This sample was chosen arbitrarily.
+Table of timings in seconds for getting paired end fastq's for
+[SRR32597808](https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR32597808&display=metadata)
+ `SRR32597808_1.fastq` and `SRR32597808_2.fastq`. This sample was chosen arbitrarily.
 
 | Date | OS | prefetch, fasterq-dump | aws, fasterq-dump | fasterq-dump only |
 | --- | :-- | --: | --: | --: |
-| Mar 15th 2025 | macOS | 17.32 | 16.89 | 61.36 |
-| Mar 15th 2025 | ubuntu | 16.87 | 11.12 | 28.86 |
 
 New timings at the start of each month
 

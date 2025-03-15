@@ -32,7 +32,7 @@ jobs:
             - name: Run fastq getting approach and store timings
               id: run_approach
               env:
-                ACCESSION: "SRR32515828"
+                ACCESSION: "SRR32597808"
               run: |
                 timing=`(time bash scripts/${{ matrix.approach }}.bash) 2>&1 | awk '$1 ~ "real" { split($2,a,"[ms]"); printf "%.2f\n",a[1]*60+a[2] }'`
                 shasum *.fastq*
@@ -71,7 +71,7 @@ jobs:
                 AWS_FQD: ${{ needs.fetch_fastq.outputs.macos_aws_fqdump }}
                 FQD_ONLY: ${{ needs.fetch_fastq.outputs.macos_fqdumponly }}
 
-            - name: Commit and push changed to README
+            - name: Commit and push changes to README
               run: |-
                 git diff
                 git config --global user.email "actions@users.noreply.github.com"
