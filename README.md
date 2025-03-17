@@ -21,6 +21,8 @@ New timings at the start of each month
 
 | Date | OS | aria2c EBI | prefetch, fasterq-dump | aws, fasterq-dump | fasterq-dump only |
 | --- | :-- | --: | --: | --: | --: |
+| Mar 17th 2025 | macOS | 24.05 | 39.73 | 32.24 | 145.15 |
+| Mar 17th 2025 | ubuntu | 41.27 | 39.58 | 33.45 | 77.63 |
 | Mar 16th 2025 | macOS | 22.89 | 34.68 | 36.70 | 66.75 |
 | Mar 16th 2025 | ubuntu | 46.43 | 39.27 | 33.33 | 72.67 |
 | Mar 15th 2025 | macOS | 37.58 | 35.85 | 38.54 | 138.96 |
