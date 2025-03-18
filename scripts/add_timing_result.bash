@@ -10,6 +10,6 @@ DaySuffix() {
 }
 DATE_STR=$(date "+%b %d`DaySuffix` %Y")
 
-ROW="| $DATE_STR | $OS | $ARIA2C_EBI | $PF_FQD | $AWS_FQD | $FASTERQ_ONLY | $FASTQ_ONLY |"
+ROW="| $DATE_STR | $OS | $ARIA2C_EBI | $PF_FQD | $AWS_FQD | $FQD_ONLY |"
 
 sed -i "s/\(.* --- .*\)/\1\n$ROW/" README.md
