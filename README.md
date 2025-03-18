@@ -12,6 +12,7 @@ The different approaches currently being used are
 - [aws, fasterq-dump](scripts/aws_and_fasterqdump.bash) which directly downloads the .sra file from aws instead of using prefetch
 - [fasterq-dump only](scripts/fasterqdump_only.bash) which is running fasterq-dump without prefetch of aws.
     - This is explicitly NOT recommened by NCBI
+- [fastq-dump only](scripts/fastqdump_only.bash) which is just running fastq-dump for comparison.
 
 Table of timings in seconds for getting paired end fastq's for
 [SRR32596108](https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR32596108&display=metadata)
@@ -19,18 +20,12 @@ Table of timings in seconds for getting paired end fastq's for
 
 New timings at the start of each month
 
-| Date | OS | aria2c EBI | prefetch, fasterq-dump | aws, fasterq-dump | fasterq-dump only |
-| --- | :-- | --: | --: | --: | --: |
-| Mar 18th 2025 | macOS | 22.37 | 35.57 | 41.02 | 145.95 |
-| Mar 18th 2025 | ubuntu | 45.07 | 39.59 | 33.70 | 71.83 |
-| Mar 17th 2025 | macOS | 24.05 | 39.73 | 32.24 | 145.15 |
-| Mar 17th 2025 | ubuntu | 41.27 | 39.58 | 33.45 | 77.63 |
-| Mar 16th 2025 | macOS | 22.89 | 34.68 | 36.70 | 66.75 |
-| Mar 16th 2025 | ubuntu | 46.43 | 39.27 | 33.33 | 72.67 |
-| Mar 15th 2025 | macOS | 37.58 | 35.85 | 38.54 | 138.96 |
-| Mar 15th 2025 | ubuntu | 60.80 | 38.84 | 34.84 | 94.24 |
-| Mar 15th 2025 | macOS | 20.74 | 36.41 | 39.22 | 136.01 |
-| Mar 15th 2025 | ubuntu | 40.83 | 39.28 | 36.29 | 69.34 |
+| Date | OS | aria2c EBI | prefetch, fasterq-dump | aws, fasterq-dump | fasterq-dump only | fastq-dump only |
+| --- | :-- | --: | --: | --: | --: | --: |
+| Mar 18th 2025 | macOS | 36.88 | 38.07 | 43.06 | 74.06 | 94.58 |
+| Mar 18th 2025 | ubuntu | 53.31 | 41.11 | 33.80 | 170.85 | 200.44 |
+| Mar 18th 2025 | macOS | 26.61 | 35.28 | 42.61 | 137.12 | 174.25 |
+| Mar 18th 2025 | ubuntu | 50.25 | 46.63 | 34.37 | 76.51 | 228.88 |
 
 
 Notes
@@ -47,3 +42,4 @@ TODOs
 - Write up a discussion of learnings
 - Create a github pages as well as the README?
 - Add a graph view?
+- Add fastq-dump for comparison
