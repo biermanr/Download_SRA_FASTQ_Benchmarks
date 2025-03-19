@@ -27,6 +27,14 @@ New timings at the start of each month
 | Mar 18th 2025 | macOS | 26.61 | 35.28 | 42.61 | 137.12 | 174.25 |
 | Mar 18th 2025 | ubuntu | 50.25 | 46.63 | 34.37 | 76.51 | 228.88 |
 
+```mermaid
+xychart-beta
+    title "Sales Revenue"
+    x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+    y-axis "Revenue (in $)" 4000 --> 11000
+    bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+    line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+```
 
 Notes
 - The `aria2c EBI` approach results in gzipped versions of the fastq files
