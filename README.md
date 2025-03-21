@@ -20,6 +20,55 @@ Table of timings in seconds for getting paired end fastq's for
 
 New timings at the start of each month
 
+<table>
+  <thead>
+    <tr>
+      <th width="500px"></th>
+      <th width="200px"></th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr width="600px">
+      <td>
+
+```mermaid
+---
+config:
+    xyChart:
+        width: 900
+        height: 600
+    themeVariables:
+        xyChart:
+            plotColorPalette: "#4d72b1,#dd8452,#54a968,#c34e52,#8272b2"
+---
+xychart-beta
+    title "FASTQ fetch timing on macOS-latest"
+    x-axis [March-18th, March-19th, March-20th, March-21st]
+    y-axis "Time in seconds" 0 --> 220
+    line "aria2c EBI" [ 38.31 , 38.14 , 30.13 , 36.88 , 26.61 ]
+    line "prefetch, fasterq-dump" [ 35.28, 38.07, 51.50, 53.38, 37.13 ]
+    line "aws, fasterq-dump" [ 42.61, 43.06, 50.37, 43.06, 41.17 ]
+    line "fasterq-dump only" [ 137.12, 170.85, 96.33, 77.43, 142.32 ]
+    line "fastq-dump only" [ 180.01 , 166.50 , 166.53 , 94.58 , 174.25 ]
+ ```
+</td>
+<td>
+
+![fastqdump_legend](https://placehold.co/10x10/8272b2/8272b2) - fastq-dump only
+
+![fasterqdump_legend](https://placehold.co/10x10/c34e52/c34e52) - fasterq-dump only
+
+![prefetch_fasterqdump_legend](https://placehold.co/10x10/dd8452/dd8452) - prefetch, fasterq-dump
+
+![prefetch_fasterqdump_legend](https://placehold.co/10x10/54a968/54a968) - aws, fasterq-dump
+
+![aria2c_legend](https://placehold.co/10x10/4d72b1/4d72b1) - aria2c EBI
+
+</td>
+</tr>
+</tbody>
+</table>
+
 | Date | OS | aria2c EBI | prefetch, fasterq-dump | aws, fasterq-dump | fasterq-dump only | fastq-dump only |
 | --- | :-- | --: | --: | --: | --: | --: |
 | Mar 21st 2025 | macOS | 38.31 | 37.13 | 41.17 | 142.32 | 180.01 |
@@ -33,14 +82,6 @@ New timings at the start of each month
 | Mar 18th 2025 | macOS | 26.61 | 35.28 | 42.61 | 137.12 | 174.25 |
 | Mar 18th 2025 | ubuntu | 50.25 | 46.63 | 34.37 | 76.51 | 228.88 |
 
-```mermaid
-xychart-beta
-    title "Sales Revenue"
-    x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
-    y-axis "Revenue (in $)" 4000 --> 11000
-    bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
-    line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
-```
 
 Notes
 - The `aria2c EBI` approach results in gzipped versions of the fastq files
