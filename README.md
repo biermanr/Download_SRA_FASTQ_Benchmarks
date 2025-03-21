@@ -67,10 +67,9 @@ The different approaches currently being used are
 - The timings are measured on github actions runners, so might not be reflective of your experience
 
 ## TODOs
+- MAKE THE GRAPH VIEW UPDATE AUTOMATICALLY
 - Write up a discussion of learnings
 - Create a github pages as well as the README?
-- Add a graph view?
-- Add fastq-dump for comparison
 
 ## Table of timings in seconds
 Timing for getting paired end fastq's for
