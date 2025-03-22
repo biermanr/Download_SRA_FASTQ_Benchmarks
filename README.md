@@ -78,6 +78,8 @@ Timing for getting paired end fastq's for
 
 | Date | OS | aria2c EBI | prefetch, fasterq-dump | aws, fasterq-dump | fasterq-dump only | fastq-dump only |
 | --- | :-- | --: | --: | --: | --: | --: |
+| Mar 22nd 2025 | macOS | 23.75 | 43.83 | 49.35 | 149.98 | 185.83 |
+| Mar 22nd 2025 | ubuntu | 44.56 | 39.76 | 34.64 | 77.06 | 106.28 |
 | Mar 21st 2025 | macOS | 38.31 | 37.13 | 41.17 | 142.32 | 180.01 |
 | Mar 21st 2025 | ubuntu | 59.55 | 41.47 | 35.63 | 102.59 | 101.77 |
 | Mar 20th 2025 | macOS | 38.14 | 53.38 | 43.06 | 134.63 | 166.50 |
