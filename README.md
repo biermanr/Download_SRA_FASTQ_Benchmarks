@@ -1,9 +1,51 @@
-# Download_SRA_FASTQ_Benchmarks
-Benchmarking approaches to access SRA FASTQ datasets
+# Benchmarking approaches to access SRA FASTQ datasets
 
 The Sequence Read Archive (SRA) curated by the NCBI is a fantastic resource for finding and accessing publicly available sequence data.
 I am grateful for this fantastic resource, but multiple times in the past I have run into issues knowing how best to retrieve FASTQ files.
-I am creating this repository to provide periodic timings and notes for different ways of accessing FASTQs from SRA.
+I am creating this repository to provide periodic timings and notes for different ways of accessing FASTQs from SRA. Selected sample `SRR32596108`
+to download fairly arbitrarily. This sample has 8.3M paired-end 145 bp-length reads.
+
+<table cellspacing="0" cellpadding="0" border="0">
+  <tbody>
+  <td width="600px">
+
+```mermaid
+---
+config:
+    xyChart:
+        width: 800
+        height: 600
+    themeVariables:
+        xyChart:
+            plotColorPalette: "#4d72b1,#dd8452,#54a968,#c34e52,#8272b2"
+---
+xychart-beta
+    title "FASTQ fetch of sample SRR32596108 timing on macOS-latest"
+    x-axis [ March-18th, Mar-24th-2025 ]
+    y-axis "Time in seconds"
+    line "aria2c_EBI_data" [ 38.31, 66.08 ]
+    line "prefetch_fasterq-dump_data" [ 35.28, 36.82 ]
+    line "aws_fasterq-dump_data" [ 42.61, 49.37 ]
+    line "fasterq-dump_only_data" [ 137.12, 146.65 ]
+    line "fastq-dump_only_data" [ 180.01, 172.61 ]
+ ```
+</td>
+<td>
+
+![fastqdump_legend](https://placehold.co/10x10/8272b2/8272b2) - fastq-dump only
+
+![fasterqdump_legend](https://placehold.co/10x10/c34e52/c34e52) - fasterq-dump only
+
+![prefetch_fasterqdump_legend](https://placehold.co/10x10/dd8452/dd8452) - prefetch, fasterq-dump
+
+![prefetch_fasterqdump_legend](https://placehold.co/10x10/54a968/54a968) - aws, fasterq-dump
+
+![aria2c_legend](https://placehold.co/10x10/4d72b1/4d72b1) - aria2c EBI
+
+</td>
+</tr>
+</tbody>
+</table>
 
 
 The different approaches currently being used are
@@ -14,33 +56,7 @@ The different approaches currently being used are
     - This is explicitly NOT recommened by NCBI
 - [fastq-dump only](scripts/fastqdump_only.bash) which is just running fastq-dump for comparison.
 
-Table of timings in seconds for getting paired end fastq's for
-[SRR32596108](https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR32596108&display=metadata)
- `SRR32596108_1.fastq` and `SRR32596108_2.fastq`. This sample was chosen arbitrarily.
-
-New timings at the start of each month
-
-| Date | OS | aria2c EBI | prefetch, fasterq-dump | aws, fasterq-dump | fasterq-dump only | fastq-dump only |
-| --- | :-- | --: | --: | --: | --: | --: |
-| Mar 24th 2025 | macOS | 67.54 | 43.90 | 42.80 | 150.88 | 169.38 |
-| Mar 24th 2025 | ubuntu | 92.00 | 39.02 | 33.63 | 67.55 | 125.85 |
-| Mar 23rd 2025 | macOS | 35.06 | 44.23 | 36.88 | 210.86 | 188.98 |
-| Mar 23rd 2025 | ubuntu | 48.25 | 43.19 | 39.73 | 74.27 | 230.79 |
-| Mar 22nd 2025 | macOS | 23.75 | 43.83 | 49.35 | 149.98 | 185.83 |
-| Mar 22nd 2025 | ubuntu | 44.56 | 39.76 | 34.64 | 77.06 | 106.28 |
-| Mar 21st 2025 | macOS | 38.31 | 37.13 | 41.17 | 142.32 | 180.01 |
-| Mar 21st 2025 | ubuntu | 59.55 | 41.47 | 35.63 | 102.59 | 101.77 |
-| Mar 20th 2025 | macOS | 38.14 | 53.38 | 43.06 | 134.63 | 166.50 |
-| Mar 20th 2025 | ubuntu | 44.15 | 48.00 | 40.69 | 77.43 | 128.43 |
-| Mar 19th 2025 | macOS | 30.13 | 51.50 | 50.37 | 140.40 | 166.53 |
-| Mar 19th 2025 | ubuntu | 43.52 | 39.41 | 35.02 | 96.33 | 130.84 |
-| Mar 18th 2025 | macOS | 36.88 | 38.07 | 43.06 | 74.06 | 94.58 |
-| Mar 18th 2025 | ubuntu | 53.31 | 41.11 | 33.80 | 170.85 | 200.44 |
-| Mar 18th 2025 | macOS | 26.61 | 35.28 | 42.61 | 137.12 | 174.25 |
-| Mar 18th 2025 | ubuntu | 50.25 | 46.63 | 34.37 | 76.51 | 228.88 |
-
-
-Notes
+## Notes
 - The `aria2c EBI` approach results in gzipped versions of the fastq files
     - timing includes un-gzipping, which is arguably unfair
 - The fastq files returned by `aria2c` vs. the other approaches doesn't have the same shasum
@@ -50,8 +66,17 @@ Notes
     - This seems strange since the URI's for EBI are `ftp.sra.ebi.ac.uk/vol1/fastq`
 - The timings are measured on github actions runners, so might not be reflective of your experience
 
-TODOs
+## TODOs
 - Write up a discussion of learnings
-- Create a github pages as well as the README?
-- Add a graph view?
-- Add fastq-dump for comparison
+
+## Table of timings in seconds
+Timing for getting paired end fastq's for
+[SRR32596108](https://trace.ncbi.nlm.nih.gov/Traces/?view=run_browser&acc=SRR32596108&display=metadata)
+ `SRR32596108_1.fastq` and `SRR32596108_2.fastq`
+
+| Date | OS | aria2c EBI | prefetch, fasterq-dump | aws, fasterq-dump | fasterq-dump only | fastq-dump only |
+| --- | :-- | --: | --: | --: | --: | --: |
+| Mar-20th-2025 | macOS | 66.08 | 36.82 | 49.37 | 146.65 | 172.61 |
+| Mar-20th-2025 | ubuntu | 67.70 | 49.42 | 33.34 | 204.66 | 128.15 |
+| Mar-18th-2025 | macOS | 38.31 | 35.28 | 42.61 | 137.12 | 180.01 |
+| Mar-18th-2025 | ubuntu | 53.31 | 41.11 | 33.80 | 170.85 | 200.44 |
