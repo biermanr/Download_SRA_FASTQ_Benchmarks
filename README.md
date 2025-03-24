@@ -21,7 +21,7 @@ config:
 ---
 xychart-beta
     title "FASTQ fetch of sample SRR32596108 timing on macOS-latest"
-    x-axis [ March-18th, Mar-24th-2025, Mar-24th-2025 ]
+    x-axis [ March-18th, Mar-20th-2025, Mar-24th-2025 ]
     y-axis "Time in seconds"
     line "aria2c_EBI_data" [ 38.31, 66.08, 23.05 ]
     line "prefetch_fasterq-dump_data" [ 35.28, 36.82, 42.38 ]
