@@ -20,6 +20,6 @@ if [[ $OS == "macOS" ]]; then
   sed -i "s/\(.*aria2c_EBI_data.*\) ]/\1, $ARIA2C_EBI ]/" README.md
   sed -i "s/\(.*prefetch_fasterq-dump_data.*\) ]/\1, $PF_FQD ]/" README.md
   sed -i "s/\(.*aws_fasterq-dump_data.*\) ]/\1, $AWS_FQD ]/" README.md
-  sed -i "s/\(.*fasterq-dump_only_data.*\) ]/\1, $FATERQ_ONLY ]/" README.md
+  sed -i "s/\(.*fasterq-dump_only_data.*\) ]/\1, $FASTERQ_ONLY ]/" README.md
   sed -i "s/\(.*fastq-dump_only_data.*\) ]/\1, $FASTQ_ONLY ]/" README.md
 fi
