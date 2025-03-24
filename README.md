@@ -21,13 +21,13 @@ config:
 ---
 xychart-beta
     title "FASTQ fetch of sample SRR32596108 timing on macOS-latest"
-    x-axis [ March-18th, March-19th, March-20th, March-21st, Mar-24th-2025 ]
+    x-axis [ March-18th, Mar-24th-2025 ]
     y-axis "Time in seconds"
-    line "aria2c_EBI_data" [ 38.31 , 38.14 , 30.13 , 36.88, 66.08 ]
-    line "prefetch_fasterq-dump_data" [ 35.28, 38.07, 51.50, 53.38, 36.82 ]
-    line "aws_fasterq-dump_data" [ 42.61, 43.06, 50.37, 43.06, 49.37 ]
-    line "fasterq-dump_only_data" [ 137.12, 170.85, 96.33, 77.43, 146.65 ]
-    line "fastq-dump_only_data" [ 180.01 , 166.50 , 166.53 , 94.58, 172.61 ]
+    line "aria2c_EBI_data" [ 38.31, 66.08 ]
+    line "prefetch_fasterq-dump_data" [ 35.28, 36.82 ]
+    line "aws_fasterq-dump_data" [ 42.61, 49.37 ]
+    line "fasterq-dump_only_data" [ 137.12, 146.65 ]
+    line "fastq-dump_only_data" [ 180.01, 172.61 ]
  ```
 </td>
 <td>
@@ -67,7 +67,6 @@ The different approaches currently being used are
 - The timings are measured on github actions runners, so might not be reflective of your experience
 
 ## TODOs
-- MAKE THE GRAPH VIEW UPDATE AUTOMATICALLY
 - Write up a discussion of learnings
 
 ## Table of timings in seconds
@@ -77,19 +76,7 @@ Timing for getting paired end fastq's for
 
 | Date | OS | aria2c EBI | prefetch, fasterq-dump | aws, fasterq-dump | fasterq-dump only | fastq-dump only |
 | --- | :-- | --: | --: | --: | --: | --: |
-| Mar-24th-2025 | macOS | 66.08 | 36.82 | 49.37 | 146.65 | 172.61 |
-| Mar-24th-2025 | ubuntu | 67.70 | 49.42 | 33.34 | 204.66 | 128.15 |
-| Mar 23rd 2025 | macOS | 35.06 | 44.23 | 36.88 | 210.86 | 188.98 |
-| Mar 23rd 2025 | ubuntu | 48.25 | 43.19 | 39.73 | 74.27 | 230.79 |
-| Mar 22nd 2025 | macOS | 23.75 | 43.83 | 49.35 | 149.98 | 185.83 |
-| Mar 22nd 2025 | ubuntu | 44.56 | 39.76 | 34.64 | 77.06 | 106.28 |
-| Mar 21st 2025 | macOS | 38.31 | 37.13 | 41.17 | 142.32 | 180.01 |
-| Mar 21st 2025 | ubuntu | 59.55 | 41.47 | 35.63 | 102.59 | 101.77 |
-| Mar 20th 2025 | macOS | 38.14 | 53.38 | 43.06 | 134.63 | 166.50 |
-| Mar 20th 2025 | ubuntu | 44.15 | 48.00 | 40.69 | 77.43 | 128.43 |
-| Mar 19th 2025 | macOS | 30.13 | 51.50 | 50.37 | 140.40 | 166.53 |
-| Mar 19th 2025 | ubuntu | 43.52 | 39.41 | 35.02 | 96.33 | 130.84 |
-| Mar 18th 2025 | macOS | 36.88 | 38.07 | 43.06 | 74.06 | 94.58 |
-| Mar 18th 2025 | ubuntu | 53.31 | 41.11 | 33.80 | 170.85 | 200.44 |
-| Mar 18th 2025 | macOS | 26.61 | 35.28 | 42.61 | 137.12 | 174.25 |
-| Mar 18th 2025 | ubuntu | 50.25 | 46.63 | 34.37 | 76.51 | 228.88 |
+| Mar-20th-2025 | macOS | 66.08 | 36.82 | 49.37 | 146.65 | 172.61 |
+| Mar-20th-2025 | ubuntu | 67.70 | 49.42 | 33.34 | 204.66 | 128.15 |
+| Mar-18th-2025 | macOS | 38.31 | 35.28 | 42.61 | 137.12 | 180.01 |
+| Mar-18th-2025 | ubuntu | 53.31 | 41.11 | 33.80 | 170.85 | 200.44 |
