@@ -21,13 +21,19 @@ config:
 ---
 xychart-beta
     title "FASTQ fetch of sample SRR32596108 timing on macOS-latest"
-    x-axis [March-18th, March-19th, March-20th, March-21st]
-    y-axis "Time in seconds" 0 --> 220
-    line "aria2c EBI" [ 38.31 , 38.14 , 30.13 , 36.88 , 26.61 ]
-    line "prefetch, fasterq-dump" [ 35.28, 38.07, 51.50, 53.38, 37.13 ]
-    line "aws, fasterq-dump" [ 42.61, 43.06, 50.37, 43.06, 41.17 ]
-    line "fasterq-dump only" [ 137.12, 170.85, 96.33, 77.43, 142.32 ]
-    line "fastq-dump only" [ 180.01 , 166.50 , 166.53 , 94.58 , 174.25 ]
+    x-axis [ March-18th, March-19th, March-20th, March-21st 
+    ]
+    y-axis "Time in seconds"
+    line "aria2c_EBI_data" [ 38.31 , 38.14 , 30.13 , 36.88 , 26.61 
+    ]
+    line "prefetch_fasterq-dump_data" [ 35.28, 38.07, 51.50, 53.38, 37.13 
+    ]
+    line "aws_fasterq-dump_data" [ 42.61, 43.06, 50.37, 43.06, 41.17 
+    ]
+    line "fasterq-dump_only_data" [ 137.12, 170.85, 96.33, 77.43, 142.32 
+    ]
+    line "fastq-dump_only_data" [ 180.01 , 166.50 , 166.53 , 94.58 , 174.25 
+    ]
  ```
 </td>
 <td>
@@ -69,7 +75,6 @@ The different approaches currently being used are
 ## TODOs
 - MAKE THE GRAPH VIEW UPDATE AUTOMATICALLY
 - Write up a discussion of learnings
-- Create a github pages as well as the README?
 
 ## Table of timings in seconds
 Timing for getting paired end fastq's for
