@@ -21,13 +21,13 @@ config:
 ---
 xychart-beta
     title "FASTQ fetch of sample SRR32596108 timing on macOS-latest"
-    x-axis [ March-18th, March-19th, March-20th, March-21st, Mar 24th 2025 ]
+    x-axis [ March-18th, March-19th, March-20th, March-21st ]
     y-axis "Time in seconds"
-    line "aria2c_EBI_data" [ 38.31 , 38.14 , 30.13 , 36.88 , 26.61, 23.59 ]
-    line "prefetch_fasterq-dump_data" [ 35.28, 38.07, 51.50, 53.38, 37.13, 49.34 ]
-    line "aws_fasterq-dump_data" [ 42.61, 43.06, 50.37, 43.06, 41.17, 36.54 ]
-    line "fasterq-dump_only_data" [ 137.12, 170.85, 96.33, 77.43, 142.32,  ]
-    line "fastq-dump_only_data" [ 180.01 , 166.50 , 166.53 , 94.58 , 174.25, 239.33 ]
+    line "aria2c_EBI_data" [ 38.31 , 38.14 , 30.13 , 36.88 ]
+    line "prefetch_fasterq-dump_data" [ 35.28, 38.07, 51.50, 53.38 ]
+    line "aws_fasterq-dump_data" [ 42.61, 43.06, 50.37, 43.06 ]
+    line "fasterq-dump_only_data" [ 137.12, 170.85, 96.33, 77.43 ]
+    line "fastq-dump_only_data" [ 180.01 , 166.50 , 166.53 , 94.58 ]
  ```
 </td>
 <td>
@@ -77,12 +77,6 @@ Timing for getting paired end fastq's for
 
 | Date | OS | aria2c EBI | prefetch, fasterq-dump | aws, fasterq-dump | fasterq-dump only | fastq-dump only |
 | --- | :-- | --: | --: | --: | --: | --: |
-| Mar 24th 2025 | macOS | 23.59 | 49.34 | 36.54 | 141.68 | 239.33 |
-| Mar 24th 2025 | ubuntu | 51.51 | 42.01 | 40.58 | 69.71 | 127.31 |
-| Mar 24th 2025 | macOS | 24.42 | 40.45 | 41.89 | 139.82 | 173.34 |
-| Mar 24th 2025 | ubuntu | 41.49 | 39.10 | 33.83 | 96.62 | 231.73 |
-| Mar 24th 2025 | macOS | 67.54 | 43.90 | 42.80 | 150.88 | 169.38 |
-| Mar 24th 2025 | ubuntu | 92.00 | 39.02 | 33.63 | 67.55 | 125.85 |
 | Mar 23rd 2025 | macOS | 35.06 | 44.23 | 36.88 | 210.86 | 188.98 |
 | Mar 23rd 2025 | ubuntu | 48.25 | 43.19 | 39.73 | 74.27 | 230.79 |
 | Mar 22nd 2025 | macOS | 23.75 | 43.83 | 49.35 | 149.98 | 185.83 |

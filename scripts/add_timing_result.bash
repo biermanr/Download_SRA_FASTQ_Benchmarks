@@ -8,7 +8,7 @@ DaySuffix() {
     *)       echo "th";;
   esac
 }
-DATE_STR=$(date "+%b %d`DaySuffix` %Y")
+DATE_STR=$(date "+%b-%d`DaySuffix`-%Y")
 
 # Add rows to README table
 ROW="| $DATE_STR | $OS | $ARIA2C_EBI | $PF_FQD | $AWS_FQD | $FASTERQ_ONLY | $FASTQ_ONLY |"
